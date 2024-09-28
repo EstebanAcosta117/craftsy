@@ -2,13 +2,10 @@ const path = require('path')
 
 module.exports = {
     list : (req,res) => {
-        return res.sendFile(path.join(__dirname,'..','views','products.html'))
-
+        return res.render('products')
     },
     detail : (req,res) => {
-
         console.log(req.params)
-        return res.sendFile(path.join(__dirname,'..','views','product-detail.html'))
-
+        return res.render('product-details')
     }
 }

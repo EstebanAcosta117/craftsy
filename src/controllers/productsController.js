@@ -1,11 +1,17 @@
-const path = require('path')
+const {getData} = require ('../data')
+const products = getData ('products.json')
+
 
 module.exports = {
     list : (req,res) => {
-        return res.render('products')
+        return res.render('products', {products})
     },
     detail : (req,res) => {
-        console.log(req.params)
-        return res.render('product-details')
+        const {product_id} = req.params
+        const product = products.find(product => product.id === +product_id)
+
+        return res.render('product-details', {
+            ...product
+        })
     }
 }
